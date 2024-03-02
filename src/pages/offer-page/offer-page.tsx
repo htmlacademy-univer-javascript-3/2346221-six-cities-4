@@ -1,8 +1,19 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import HeaderLogo from '../../components/header-logo/header-logo';
+import Page404 from '../page404/page404';
 
-function OfferPage(): JSX.Element {
-  return (
+type OfferProps = {
+  offers: {
+    id: string;
+    title: string;
+  } [];
+};
+
+function OfferPage({offers}: OfferProps): JSX.Element {
+  const params = useParams();
+  const currentOffer = offers.some((offer) => offer.id === params.id);
+
+  return currentOffer ? (
     <div className="page">
       <header className="header">
         <div className="container">
@@ -334,7 +345,7 @@ function OfferPage(): JSX.Element {
         </div>
       </main>
     </div>
-  );
+  ) : (<Page404 />);
 }
 
 export default OfferPage;

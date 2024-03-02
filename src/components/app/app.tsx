@@ -4,6 +4,9 @@ import LoginPage from '../../pages/login-page/login-page';
 import FavoritesPage from '../../pages/favorites-page/favorites-page';
 import OfferPage from '../../pages/offer-page/offer-page';
 import Page404 from '../../pages/page404/page404';
+import PrivateRoute from '../private-route/private-route';
+import { AuthorizationStatus, Offers } from '../../const';
+
 
 type AppProps = {
   cardsCount: number;
@@ -16,8 +19,15 @@ function App({cardsCount}: AppProps): JSX.Element {
         <Route path='/'>
           <Route index element={<MainPage cardsCount = {cardsCount} />} />
           <Route path='login' element={<LoginPage />} />
-          <Route path='favorites' element={<FavoritesPage cardsCount = {cardsCount} />} />
-          <Route path='offer/:id' element={<OfferPage />} />
+          <Route path='offer/:id' element={<OfferPage offers={Offers} />} />
+          <Route
+            path='favorites'
+            element={
+              <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+                <FavoritesPage cardsCount = {cardsCount} />
+              </PrivateRoute>
+            }
+          />
           <Route path='*' element={<Page404 />} />
         </Route>
       </Routes>
