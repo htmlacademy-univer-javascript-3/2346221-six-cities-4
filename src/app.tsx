@@ -1,11 +1,11 @@
 import {Route, BrowserRouter, Routes} from 'react-router-dom';
-import MainPage from '../../pages/main-page/main-page';
-import LoginPage from '../../pages/login-page/login-page';
-import FavoritesPage from '../../pages/favorites-page/favorites-page';
-import OfferPage from '../../pages/offer-page/offer-page';
-import Page404 from '../../pages/page404/page404';
-import PrivateRoute from '../private-route/private-route';
-import { AuthorizationStatus, Offers } from '../../const';
+import MainPage from './pages/main-page/main-page';
+import LoginPage from './pages/login-page/login-page';
+import FavoritesPage from './pages/favorites-page/favorites-page';
+import OfferPage from './pages/offer-page/offer-page';
+import Page404 from './pages/page404/page404';
+import PrivateRoute from './components/private-route/private-route';
+import { AuthorizationStatus, Offers } from './const';
 
 
 type AppProps = {
