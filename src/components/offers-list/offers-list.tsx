@@ -17,11 +17,6 @@ function OffersList({cardsCount, offers}: OffersListProps): JSX.Element {
     }
   };
 
-  const cards: JSX.Element[] = [];
-  for (let i = 0; i < cardsCount; i++) {
-    cards.push(<Card onMouseOver={handleMouseOver} offerData={offers[i]} />);
-  }
-
   return (
     <div className="cities__places-container container">
       <section className="cities__places places">
@@ -43,7 +38,9 @@ function OffersList({cardsCount, offers}: OffersListProps): JSX.Element {
           </ul>
         </form>
         <div className="cities__places-list places__list tabs__content">
-          {cards}
+          {offers.slice(0, cardsCount).map((offer) => (
+            <Card key={offer.id} onMouseOver={handleMouseOver} offerData={offer} />
+          ))}
         </div>
       </section>
       <div className="cities__right-section">

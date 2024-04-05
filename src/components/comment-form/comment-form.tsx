@@ -12,9 +12,12 @@ function CommentForm(): JSX.Element {
   const handleTextChange = (evt: ChangeEvent<HTMLTextAreaElement>) => {
     setReview({...review, text: evt.target.value});
   };
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+  };
 
   return (
-    <form className="reviews__form form" action="#" method="post">
+    <form className="reviews__form form" action="#" method="post" onSubmit={handleSubmit}>
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating">
         <input className="form__rating-input visually-hidden" name="rating" value="5" id="5-stars" type="radio" onChange={handleRatingChange} />
@@ -57,7 +60,7 @@ function CommentForm(): JSX.Element {
         <p className="reviews__help">
                       To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
         </p>
-        <button className="reviews__submit form__submit button" type="submit" disabled={undefined}>Submit</button>
+        <button className="reviews__submit form__submit button" type="submit" disabled={!review.rating || review.text.length < 50}>Submit</button>
       </div>
     </form>
   );

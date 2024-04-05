@@ -1,5 +1,5 @@
 import { Offer } from '../../types/offers';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 type CardProps = {
   onMouseOver: (id: string) => void;
@@ -7,24 +7,17 @@ type CardProps = {
 };
 
 function Card({onMouseOver, offerData}: CardProps): JSX.Element {
-  const navigate = useNavigate();
-  const premiumBlock = (
-    <div className="place-card__mark">
-      <span>Premium</span>
-    </div>
-  );
-
   return (
     <article onMouseOver={(evt) => {
       evt.preventDefault();
       onMouseOver(offerData.id);
     }} className="cities__card place-card"
     >
-      {offerData.isPremium ? premiumBlock : null}
+      {offerData.isPremium && <div className="place-card__mark"> <span>Premium</span> </div>}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a onClick={() => navigate(`/offer/${offerData.id}`)}>
+        <Link to={`/offer/${offerData.id}`}>
           <img className="place-card__image" src={offerData.previewImage} width="260" height="200" alt="Place image" />
-        </a>
+        </Link>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
@@ -46,7 +39,7 @@ function Card({onMouseOver, offerData}: CardProps): JSX.Element {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a onClick={() => navigate(`/offer/${offerData.id}`)}>{offerData.title}</a>
+          <Link to={`/offer/${offerData.id}`}>{offerData.title}</Link>
         </h2>
         <p className="place-card__type">{offerData.type}</p>
       </div>
