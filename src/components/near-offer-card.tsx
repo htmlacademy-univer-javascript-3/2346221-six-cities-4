@@ -1,30 +1,22 @@
-import { useAppDispatch } from '../hooks';
-import { setSelectedOffer } from '../store/action';
 import { Offer } from '../types/offer';
 import { Link } from 'react-router-dom';
 import { formatRating } from '../utils';
+import { useAppDispatch } from '../hooks';
+import { setSelectedOffer } from '../store/action';
 
-type CardProps = {
+type NearOfferCardProps = {
   offer: Offer;
 };
 
-function Card({offer}: CardProps): JSX.Element {
+function NearOfferCard({offer}: NearOfferCardProps): JSX.Element {
   const dispatch = useAppDispatch();
   return (
     <article
-      onMouseOver={(evt) => {
-        evt.preventDefault();
-        dispatch(setSelectedOffer(offer));
-      }}
-      onMouseLeave={(evt) => {
-        evt.preventDefault();
-        dispatch(setSelectedOffer(null));
-      }}
       onClick={(evt) => {
         evt.preventDefault();
         dispatch(setSelectedOffer(offer));
       }}
-      className="cities__card place-card"
+      className="near-places__card place-card"
     >
       {offer.isPremium && <div className="place-card__mark"> <span>Premium</span> </div>}
       <div className="cities__image-wrapper place-card__image-wrapper">
@@ -60,4 +52,4 @@ function Card({offer}: CardProps): JSX.Element {
   );
 }
 
-export default Card;
+export default NearOfferCard;

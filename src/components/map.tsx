@@ -1,25 +1,39 @@
 import { useEffect, useRef } from 'react';
-import { Marker } from 'leaflet';
+import { Icon, Marker } from 'leaflet';
 import useMap from '../hooks/use-map';
 import { City } from '../types/city';
 import 'leaflet/dist/leaflet.css';
 import { PointLocation } from '../types/point-location';
+import { useAppSelector } from '../hooks';
 
 type MapProps = {
   city: City;
   points: PointLocation[];
-  selectedPoint?: PointLocation;
 }
 
-function Map({city, points, selectedPoint}: MapProps): JSX.Element {
+function Map({city, points}: MapProps): JSX.Element {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
   const markersRef = useRef<Marker[]>([]);
+
+  const selectedPoint = useAppSelector((state) => state.selectedOffer)?.location;
 
   useEffect(() => {
     if (map) {
       markersRef.current.forEach((marker) => map.removeLayer(marker));
       markersRef.current = [];
+
+      const defaultIcon = new Icon({
+        iconUrl: 'img/pin.svg',
+        iconSize: [40, 40],
+        iconAnchor: [20, 40],
+      });
+
+      const activeIcon = new Icon({
+        iconUrl: 'img/pin-active.svg',
+        iconSize: [40, 40],
+        iconAnchor: [20, 40],
+      });
 
       points
         .filter((point) => point !== selectedPoint)
@@ -27,7 +41,7 @@ function Map({city, points, selectedPoint}: MapProps): JSX.Element {
           const marker = new Marker({
             lat: point.latitude,
             lng: point.longitude,
-          }).addTo(map);
+          }, {icon: defaultIcon}).addTo(map);
           markersRef.current.push(marker);
         });
 
@@ -35,7 +49,7 @@ function Map({city, points, selectedPoint}: MapProps): JSX.Element {
         const selectedMarker = new Marker({
           lat: selectedPoint.latitude,
           lng: selectedPoint.longitude,
-        }).addTo(map);
+        }, {icon: activeIcon}).addTo(map);
         markersRef.current.push(selectedMarker);
         map.setView({
           lat: selectedPoint.latitude,
