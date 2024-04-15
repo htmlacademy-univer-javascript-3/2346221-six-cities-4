@@ -16,7 +16,7 @@ const initialState: InitialState = {
   city: CITIES[0],
   offers: Offers,
   selectedOffer: null,
-  selectedSortType: SORT_TYPES[0],
+  selectedSortType: SORT_TYPES.Popular,
 };
 
 const reducer = createReducer(initialState, (builder) => {

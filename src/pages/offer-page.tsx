@@ -155,6 +155,7 @@ function OfferPage({detailedOffers, reviews}: OfferProps): JSX.Element {
             <Map
               city={city}
               points={nearestOffers.map((offer) => offer.location)}
+              selectedPoint={currentDetailedOffer.location}
             />
           </section>
         </section>

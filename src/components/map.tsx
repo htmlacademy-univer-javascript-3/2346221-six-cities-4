@@ -4,19 +4,17 @@ import useMap from '../hooks/use-map';
 import { City } from '../types/city';
 import 'leaflet/dist/leaflet.css';
 import { PointLocation } from '../types/point-location';
-import { useAppSelector } from '../hooks';
 
 type MapProps = {
   city: City;
   points: PointLocation[];
+  selectedPoint: PointLocation | null;
 }
 
-function Map({city, points}: MapProps): JSX.Element {
+function Map({city, points, selectedPoint}: MapProps): JSX.Element {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
   const markersRef = useRef<Marker[]>([]);
-
-  const selectedPoint = useAppSelector((state) => state.selectedOffer)?.location;
 
   useEffect(() => {
     if (map) {

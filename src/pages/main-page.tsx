@@ -7,16 +7,22 @@ import { useAppSelector } from '../hooks';
 import { useEffect, useState } from 'react';
 import CitiesList from '../components/cities-list';
 import OffersSorting from '../components/offers-sorting';
+import { PointLocation } from '../types/point-location';
 
 function MainPage(): JSX.Element {
   const offers: Offer[] = useAppSelector((state) => state.offers);
   const city = useAppSelector((state) => state.city);
   const [currentCityOffers, setCurrentCityOffers] = useState<Offer[]>(offers);
+  const [selectedOfferLocation, setSelectedOfferLocation] = useState<PointLocation | null>(null);
 
   useEffect(() => {
     const filteredOffers = offers.filter((offer) => offer.city.name === city.name);
     setCurrentCityOffers(filteredOffers);
   }, [city, offers]);
+
+  const handlePointLocationChange = (point: PointLocation | null) => {
+    setSelectedOfferLocation(point);
+  };
 
   return (
     <div className="page page--gray page--main">
@@ -60,13 +66,14 @@ function MainPage(): JSX.Element {
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">{currentCityOffers.length} places to stay in {city.name}</b>
               <OffersSorting />
-              <OffersList offers={currentCityOffers} />
+              <OffersList offers={currentCityOffers} onMouseOver={handlePointLocationChange} />
             </section>
             <div className="cities__right-section">
               <section className="cities__map map">
                 <Map
                   points={currentCityOffers.map((offer) => offer.location)}
                   city={city}
+                  selectedPoint={selectedOfferLocation}
                 />
               </section>
             </div>

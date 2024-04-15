@@ -24,10 +24,10 @@ function OffersSorting() {
           ${isOpen ? 'places__options--opened' : ''}`
         }
       >
-        {SORT_TYPES.map((type) => (
+        {Object.values(SORT_TYPES).map((type) => (
           <li
             key={type}
-            className={`places__option ${selectedSortType === type && 'places__option--active'}`}
+            className={`places__option ${selectedSortType === type.toString() && 'places__option--active'}`}
             tabIndex={0}
             onClick={() => dispatch(setSortType(type))}
           >
