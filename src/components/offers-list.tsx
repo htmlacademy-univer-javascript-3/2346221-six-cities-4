@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useAppSelector } from '../hooks';
 import { Offer } from '../types/offer';
 import { PointLocation } from '../types/point-location';
@@ -20,4 +21,6 @@ function OffersList({offers, onMouseOver: handlePointLocationChange}: OffersList
   );
 }
 
-export default OffersList;
+const memoizedOffersList = memo(OffersList);
+
+export default memoizedOffersList;

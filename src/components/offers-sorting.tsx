@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { setSortType } from '../store/action';
 import { SORT_TYPES } from '../const';
@@ -40,4 +40,6 @@ function OffersSorting() {
   );
 }
 
-export default OffersSorting;
+const memoizedOffersSorting = memo(OffersSorting);
+
+export default memoizedOffersSorting;

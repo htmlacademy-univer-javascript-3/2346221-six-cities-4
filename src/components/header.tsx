@@ -4,6 +4,7 @@ import { AuthorizationStatus } from '../const';
 import HeaderLogo from './header-logo';
 import { logoutAction } from '../store/api-actions';
 import { Offer } from '../types/offer';
+import { memo } from 'react';
 
 function Header(): JSX.Element {
   const offers: Offer[] = useAppSelector((state) => state.offers);
@@ -59,4 +60,6 @@ function Header(): JSX.Element {
   );
 }
 
-export default Header;
+const memoizedHeader = memo(Header);
+
+export default memoizedHeader;
