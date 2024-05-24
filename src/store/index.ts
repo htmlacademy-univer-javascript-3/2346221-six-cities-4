@@ -19,8 +19,8 @@ export {
 } from './slices/reviews';
 
 export {
-  fetchNearbyAction,
-  updateMultipleNearby,
+  fetchNearbyAction as fetchNearbyAction,
+  updateMultipleNearby as updateMultipleNearby,
   getNearbyOffers,
   getIsNearbyOffersLoading,
 } from './slices/nearby-offers';

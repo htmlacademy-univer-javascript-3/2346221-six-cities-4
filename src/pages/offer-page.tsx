@@ -25,7 +25,7 @@ function OfferPage(): JSX.Element {
 
   const isAllLoading = isOfferLoading || isNearbyOffersLoading || isReviewsLoading;
 
-  const nearestOffers = nearbyList.slice(0, 3);
+  const nearbyOffers = nearbyList.slice(0, 3);
 
   useEffect(() => {
     if (id) {
@@ -136,14 +136,14 @@ function OfferPage(): JSX.Element {
           </div>
           <section className="offer__map map">
             <Map
-              city={nearestOffers[0].city}
-              points={nearestOffers}
+              city={nearbyOffers[0].city}
+              points={nearbyOffers}
               selectedPoint={detailedOffer}
             />
           </section>
         </section>
         <div className="container">
-          <NearOffersList offers={nearestOffers.slice(0, 3)} />
+          <NearOffersList offers={nearbyOffers.slice(0, 3)} />
         </div>
       </main>
     </div>

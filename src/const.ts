@@ -85,7 +85,7 @@ export enum NameSpace {
   MultipleOffersData = 'MULTIPLE_OFFERS_DATA',
   SingleOfferData = 'SINGLE_OFFER_DATA',
   FavoritesData = 'FAVORITES_DATA',
-  NearbyOffersData = 'NEARBY_OFFERS_DATA',
+  NearbyOffersData = 'NEAR_OFFERS_DATA',
   ReviewsData = 'REVIEWS_DATA',
 }
 

@@ -1,4 +1,4 @@
-export { getIsNearbyOffersLoading, getNearbyOffers } from './selectors';
+export { getIsNearbyOffersLoading as getIsNearbyOffersLoading, getNearbyOffers as getNearbyOffers } from './selectors';
 
 export { updateMultipleNearby, nearbyOffersData } from './nearby-offers-data';
 
