@@ -5,8 +5,8 @@ import { getAuthCheckedStatus, getFavoritesCount, getUserInfo, logoutAction } fr
 import { memo } from 'react';
 
 function Header(): JSX.Element {
-  const dispatch = useAppDispatch();
 
+  const dispatch = useAppDispatch();
   const userInfo = useAppSelector(getUserInfo);
   const favoriteOffersCount = useAppSelector(getFavoritesCount);
   const isAuthed = useAppSelector(getAuthCheckedStatus);
