@@ -1,9 +1,9 @@
 import { memo } from 'react';
-import { useAppSelector } from '../hooks';
-import { Offer } from '../types/offer';
-import { sortOffers } from '../utils';
-import Card from './card';
-import { getSelectedSortType } from '../store';
+import { useAppSelector } from '../../hooks';
+import { Offer } from '../../types/offer';
+import { sortOffers } from '../../utils';
+import Card from '../card/card';
+import { getSelectedSortType } from '../../store';
 
 type OffersListProps = {
   offers: Offer[];

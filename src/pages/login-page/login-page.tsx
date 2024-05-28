@@ -1,12 +1,12 @@
 import { Link, useNavigate } from 'react-router-dom';
-import HeaderLogo from '../components/header-logo';
+import HeaderLogo from '../../components/header-logo/header-logo';
 import { FormEvent, useRef } from 'react';
-import { useAppDispatch, useAppSelector } from '../hooks';
-import { changeCity, getIsSubmittingLogin, loginAction } from '../store';
-import { getRandomArrayElement, isPasswordValid } from '../utils';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { changeCity, getIsSubmittingLogin, loginAction } from '../../store';
+import { getRandomArrayElement, isPasswordValid } from '../../utils';
 import { toast } from 'react-toastify';
-import { CITIES } from '../const';
-import { City } from '../types/city';
+import { AvailableCities } from '../../const';
+import { City } from '../../types/city';
 
 function LoginPage(): JSX.Element {
   const loginRef = useRef<HTMLInputElement | null>(null);
@@ -16,8 +16,8 @@ function LoginPage(): JSX.Element {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const randomCity = getRandomArrayElement(Object.keys(CITIES));
-  const randomCityDetails: City = CITIES[randomCity];
+  const randomCity = getRandomArrayElement(Object.keys(AvailableCities));
+  const randomCityDetails: City = AvailableCities[randomCity];
 
   const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();

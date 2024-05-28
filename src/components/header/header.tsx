@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../hooks';
-import HeaderLogo from './header-logo';
-import { getAuthCheckedStatus, getFavoritesCount, getUserInfo, logoutAction } from '../store';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import HeaderLogo from '../header-logo/header-logo';
+import { getAuthCheckedStatus, getFavoritesCount, getUserInfo, logoutAction } from '../../store';
 import { memo } from 'react';
 
 function Header(): JSX.Element {

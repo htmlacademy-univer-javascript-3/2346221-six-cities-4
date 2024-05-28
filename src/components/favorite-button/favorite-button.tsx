@@ -1,12 +1,12 @@
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../hooks';
-import { ROUTES } from '../const';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { AvailableRoutes } from '../../const';
 import { MouseEvent } from 'react';
 import {
   getIsFavoriteStatusSubmitting,
   changeFavoriteStatusAction,
   getAuthCheckedStatus,
-} from '../store';
+} from '../../store';
 
 type FavoriteButtonProps = {
   isFavorite: boolean;
@@ -28,7 +28,7 @@ function FavoriteButton({ isFavorite, id, width, height, buttonClass, activeClas
   const handleClick = (evt: MouseEvent<HTMLButtonElement>) => {
     evt.preventDefault();
     if (!isAuth) {
-      navigate(ROUTES.Login);
+      navigate(AvailableRoutes.Login);
       return;
     }
 

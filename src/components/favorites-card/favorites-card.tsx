@@ -1,6 +1,6 @@
-import { Offer } from '../types/offer';
+import { Offer } from '../../types/offer';
 import { Link } from 'react-router-dom';
-import FavoriteButton from './favorite-button';
+import FavoriteButton from '../favorite-button/favorite-button';
 
 type FavoriteCardProps = {
   offerData: Offer;

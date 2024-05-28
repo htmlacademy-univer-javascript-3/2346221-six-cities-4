@@ -1,15 +1,16 @@
 import { useParams } from 'react-router-dom';
-import Page404 from './page404';
-import CommentForm from '../components/comment-form';
-import ReviewList from '../components/review-list';
-import Map from '../components/map';
-import { useAppDispatch, useAppSelector } from '../hooks';
-import NearOffersList from '../components/near-offers-list';
-import Header from '../components/header';
-import { fetchNearbyAction, fetchOfferAction, fetchReviewsAction, getAuthCheckedStatus, getIsNearbyOffersLoading, getIsOfferLoading, getIsReviewsLoading, getNearbyOffers, getOffer, getReviews } from '../store';
+import Page404 from '../page404/page404';
+import CommentForm from '../../components/comment-form/comment-form';
+import ReviewList from '../../components/review-list/review-list';
+import Map from '../../components/map/map';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import NearOffersList from '../../components/near-offers-list/near-offers-list';
+import Header from '../../components/header/header';
+import { fetchNearbyAction, fetchOfferAction, fetchReviewsAction, getAuthCheckedStatus, getIsNearbyOffersLoading, getIsOfferLoading, getIsReviewsLoading, getNearbyOffers, getOffer, getReviews } from '../../store';
 import { useEffect } from 'react';
-import LoadingScreen from './loading-screen';
-import FavoriteButton from '../components/favorite-button';
+import LoadingScreen from '../loading-screen/loading-screen';
+import FavoriteButton from '../../components/favorite-button/favorite-button';
+import { formatRating } from '../../utils';
 
 function OfferPage(): JSX.Element {
   const { id } = useParams();
@@ -46,7 +47,7 @@ function OfferPage(): JSX.Element {
         <section className="offer">
           <div className="offer__gallery-container container">
             <div className="offer__gallery">
-              {detailedOffer.images.map((image) => (
+              {detailedOffer.images.slice(0, 6).map((image) => (
                 <div className="offer__image-wrapper" key={image}>
                   <img className="offer__image" src={image} alt="Photo studio" />
                 </div>
@@ -76,7 +77,7 @@ function OfferPage(): JSX.Element {
               </div>
               <div className="offer__rating rating">
                 <div className="offer__stars rating__stars">
-                  <span style={{width: `${detailedOffer.rating / 5 * 100}%`}}></span>
+                  <span style={{width: formatRating(detailedOffer.rating)}}></span>
                   <span className="visually-hidden">Rating</span>
                 </div>
                 <span className="offer__rating-value rating__value">{detailedOffer.rating}</span>

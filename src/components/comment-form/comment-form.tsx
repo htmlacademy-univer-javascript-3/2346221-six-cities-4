@@ -1,12 +1,12 @@
 import { useState, ChangeEvent, useEffect, Fragment } from 'react';
-import { useAppDispatch, useAppSelector } from '../hooks';
-import { LoadingStatus, StarRate } from '../const';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { LoadingStatus, STAR_RATE } from '../../const';
 import {
   getIsReviewsStatusSubmitting,
   getReviewsHasError,
   postReviewAction,
   setReviewsErrorStatus,
-} from '../store';
+} from '../../store';
 
 type CommentFromProps = {
   id: string;
@@ -29,6 +29,7 @@ function CommentForm({ id }: CommentFromProps): JSX.Element {
   const validateForm = (comment: string, newRating: number) => {
     const isValid = (
       comment.length >= 50 &&
+      comment.length <= 300 &&
       newRating !== 0
     );
     setValid(isValid);
@@ -76,7 +77,7 @@ function CommentForm({ id }: CommentFromProps): JSX.Element {
     <form className="reviews__form form" action="#" method="post" onSubmit={handleSubmit}>
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating">
-        {Object.entries(StarRate).map(([title, ratingStar]) => (
+        {Object.entries(STAR_RATE).map(([title, ratingStar]) => (
           <Fragment key={ratingStar}>
             <input
               className="form__rating-input visually-hidden"

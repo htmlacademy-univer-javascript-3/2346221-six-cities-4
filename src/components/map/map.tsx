@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react';
 import { Icon, Marker } from 'leaflet';
-import useMap from '../hooks/use-map';
-import { City } from '../types/city';
+import useMap from '../../hooks/use-map';
+import { City } from '../../types/city';
 import 'leaflet/dist/leaflet.css';
-import { Offer } from '../types/offer';
-import { DetailedOffer } from '../types/detailed-offer';
+import { Offer } from '../../types/offer';
+import { DetailedOffer } from '../../types/detailed-offer';
 
 type MapProps = {
   city: City;

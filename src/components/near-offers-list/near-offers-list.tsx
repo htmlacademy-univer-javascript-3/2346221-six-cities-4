@@ -1,6 +1,6 @@
 
-import { Offer } from '../types/offer';
-import NearOfferCard from './near-offer-card';
+import { Offer } from '../../types/offer';
+import NearOfferCard from '../near-offer-card/near-offer-card';
 
 type NearOffersListProps = {
   offers: Offer[];

@@ -1,8 +1,8 @@
-import Header from '../components/header';
-import CityOffers from '../components/city-offers';
-import { getOffers, getSelectedCity } from '../store';
-import CitiesList from '../components/cities-list';
-import { useAppSelector } from '../hooks';
+import Header from '../../components/header/header';
+import CityOffers from '../../components/city-offers/city-offers';
+import { getOffers, getSelectedCity } from '../../store';
+import CitiesList from '../../components/cities-list/cities-list';
+import { useAppSelector } from '../../hooks';
 import { useMemo } from 'react';
 
 function MainPage(): JSX.Element {

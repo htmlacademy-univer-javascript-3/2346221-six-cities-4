@@ -1,9 +1,9 @@
 import { memo } from 'react';
-import { CITIES } from '../const';
-import { useAppDispatch } from '../hooks';
-import { changeCity } from '../store';
-import { City } from '../types/city';
-import CitiesElement from './cities-element';
+import { AvailableCities } from '../../const';
+import { useAppDispatch } from '../../hooks';
+import { changeCity } from '../../store';
+import { City } from '../../types/city';
+import CitiesElement from '../cities-element/cities-element';
 
 function CitiesList(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -12,7 +12,7 @@ function CitiesList(): JSX.Element {
   };
   return (
     <ul className="locations__list tabs__list">
-      {Object.values(CITIES).map((city) => (
+      {Object.values(AvailableCities).map((city) => (
         <CitiesElement
           key={city.name}
           city={city}

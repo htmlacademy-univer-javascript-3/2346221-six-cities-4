@@ -1,7 +1,7 @@
-import { Offer } from '../types/offer';
+import { Offer } from '../../types/offer';
 import { Link } from 'react-router-dom';
-import { formatRating } from '../utils';
-import FavoriteButton from './favorite-button';
+import { formatRating } from '../../utils';
+import FavoriteButton from '../favorite-button/favorite-button';
 
 type NearOfferCardProps = {
   offer: Offer;

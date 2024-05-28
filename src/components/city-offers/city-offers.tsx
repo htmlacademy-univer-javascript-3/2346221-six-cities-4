@@ -1,8 +1,8 @@
-import { City } from '../types/city';
-import { Offer } from '../types/offer';
-import OffersSorting from '../components/offers-sorting';
-import OffersList from '../components/offers-list';
-import Map from '../components/map';
+import { City } from '../../types/city';
+import { Offer } from '../../types/offer';
+import OffersSorting from '../offers-sorting/offers-sorting';
+import OffersList from '../offers-list/offers-list';
+import Map from '../map/map';
 import { useCallback, useState } from 'react';
 
 type CityOffersProps = {

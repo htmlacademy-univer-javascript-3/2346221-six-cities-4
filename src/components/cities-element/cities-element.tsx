@@ -1,6 +1,6 @@
-import { useAppSelector } from '../hooks';
-import { getSelectedCity } from '../store';
-import { City } from '../types/city';
+import { useAppSelector } from '../../hooks';
+import { getSelectedCity } from '../../store';
+import { City } from '../../types/city';
 
 type CitiesElementProps = {
   city: City;

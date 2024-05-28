@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import FavoritesCard from '../components/favorites-card';
-import { useAppSelector } from '../hooks';
-import Header from '../components/header';
-import { CITIES } from '../const';
-import { getFavorites, getIsFavoritesLoading } from '../store';
-import LoadingScreen from './loading-screen';
+import FavoritesCard from '../../components/favorites-card/favorites-card';
+import { useAppSelector } from '../../hooks';
+import Header from '../../components/header/header';
+import { AvailableCities } from '../../const';
+import { getFavorites, getIsFavoritesLoading } from '../../store';
+import LoadingScreen from '../loading-screen/loading-screen';
 
 function FavoritesPage(): JSX.Element {
   const isFavoritesLoading = useAppSelector(getIsFavoritesLoading);
@@ -19,7 +19,7 @@ function FavoritesPage(): JSX.Element {
             <section className="favorites">
               <h1 className="favorites__title">Saved listing</h1>
               <ul className="favorites__list">
-                {Object.values(CITIES).map((city) => {
+                {Object.values(AvailableCities).map((city) => {
                   const cityOffers = favoriteOffers.filter((offer) => offer.city.name === city.name);
                   return (cityOffers.length !== 0) && (
                     <li className="favorites__locations-items" key={city.name}>
