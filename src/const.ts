@@ -6,7 +6,7 @@ export enum AuthorizationStatus {
   Unknown = 'UNKNOWN',
 }
 
-export enum SORT_TYPES {
+export enum SortTypes {
   Popular = 'Popular',
   LowToHigh = 'Price: low to high',
   HighToLow = 'Price: high to low',
@@ -17,7 +17,7 @@ type Cities = {
   [key: string]: City;
 };
 
-export const CITIES: Cities = {
+export const AvailableCities: Cities = {
   Paris: {
     name: 'Paris',
     location: {
@@ -89,7 +89,7 @@ export enum NameSpace {
   ReviewsData = 'REVIEWS_DATA',
 }
 
-export enum ROUTES {
+export enum AvailableRoutes {
   Main = '/',
   Login = '/login',
   Favorites = '/favorites',
@@ -107,7 +107,7 @@ export enum LoadingStatus {
 export const BACKEND_URL = 'https://14.design.htmlacademy.pro/six-cities';
 export const REQUEST_TIMEOUT = 5000;
 
-export const StarRate = {
+export const STAR_RATE = {
   terribly: 1,
   badly: 2,
   'not bad': 3,
